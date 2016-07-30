@@ -160,9 +160,9 @@ https_init_curl(wrkrInstanceData_t *pWrkrData, instanceData *pData)
         if (pData->https) {
             DBGPRINTF("%s(): Enable HTTPS\n", __FUNCTION__);
             /* for ssl */
-            curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 1L);
-            curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, 2L);
-            /* curl_easy_setopt(curl, CURLOPT_CAPATH, 0L); */
+            curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, FALSE); /* Change to 1L to verify the peer */
+            curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, FALSE); /* Change to 2L to verify the host */
+            /* curl_easy_setopt(curl, CURLOPT_CAPATH, char *capath); Pass a char * to a zero terminated string naming a directory holding multiple CA certificates to verify the peer with. If libcurl is built against OpenSSL, the certificate directory must be prepared using the openssl c_rehash utility. */
         }
     } else {
 	    /* LOG */
